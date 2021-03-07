@@ -48,7 +48,7 @@ public class PlayerPlaceBlock implements Listener {
                 }
             }, ticks - i);
         }
-        //final particle and breaking.
+        //final breaking.
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.INSTANCE(), new Runnable() {
             public void run() {
                 if(block.getLocation().getBlock().getType() == block.getType()){
