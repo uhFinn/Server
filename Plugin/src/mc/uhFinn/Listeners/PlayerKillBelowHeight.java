@@ -1,0 +1,35 @@
+/* Author: Jonathan
+ * Latest edit: Jonathan
+ * */
+package mc.uhFinn.Listeners;
+import mc.uhFinn.Main;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
+
+public class PlayerKillBelowHeight implements Listener
+{
+    private World activeWorld;
+
+    private World getActiveWorld()
+    {
+        if(activeWorld==null)
+            activeWorld= Main.INSTANCE().getServer().getWorld("normal");
+        return activeWorld;
+    }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event)
+    {
+        Player p = (Player) event.getPlayer();
+        Location loc = p.getLocation();
+        if(loc.getY() < 7){
+            if(loc.getWorld() == getActiveWorld()) {
+                p.setHealth(0);
+            }
+        }
+    }
+}

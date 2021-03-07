@@ -1,83 +1,24 @@
-package Listener;
-import kitpvp.me;
+/* Author: Jonathan
+ * Latest edit: Jonathan
+ * */
+package mc.uhFinn.Listeners;
 
-import org.bukkit.*;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.data.BlockData;
+import mc.uhFinn.Main;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageByBlockEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.MaterialData;
-import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.economy.EconomyResponse;
-import net.milkbowl.vault.permission.Permission;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.lang.reflect.InvocationTargetException;
-
-
-public class Listening  implements Listener {
-    private me plugin;
-
-    public Listening(me plugin) {
-        this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
-
-    @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) {
-        Player p = (Player) event.getPlayer();
-        if (event.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.LIGHT_WEIGHTED_PRESSURE_PLATE) {
-            p.setVelocity(p.getEyeLocation().getDirection().multiply(17.5));
-        }
-
-        Location loc = p.getLocation();
-        if(loc.getY() < 7){
-            if(loc.getWorld() == plugin.getServer().getWorld("normal")) {
-                p.damage(2000);
-            }
-        }
-    }
-
-    @EventHandler
-    public void onHorse(EntitySpawnEvent event){
-        if(event.getEntity().getType() == EntityType.ENDERMITE){
-            event.getEntity().remove();
-        }
-    }
-
-    @EventHandler
-    public void onPunch(PlayerInteractAtEntityEvent event){
-        Player p = event.getPlayer();
-        if(event.getRightClicked() instanceof Player){
-            Player attacked = (Player) event.getRightClicked();
-            if(p.getLocation().getY() > 100) event.setCancelled(true);
-            if(p.getLocation().distance(attacked.getLocation()) > 3){
-                if(p.getWalkSpeed() < 0.2){
-                    if(p.getLocation().distance(attacked.getLocation()) > 3.4){
-                        event.setCancelled(true);
-                    }
-                } //else if(p.getWalkSpeed())
-            }
-        }
-    }
-
+public class PlayerLaunch implements Listener
+{
     @EventHandler
     public void playerLaunch(PlayerMoveEvent event){
         Player p = event.getPlayer();
@@ -89,7 +30,7 @@ public class Listening  implements Listener {
                     if (active[0] == false) {
                         active[0] = true;
                         p.setInvulnerable(true);
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.INSTANCE(), new Runnable() {
                             public void run() {
                                 p.setInvulnerable(false);
                                 active[0] = false;
@@ -131,7 +72,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (mythical1P + mythical2P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -151,7 +92,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (mythical1P + mythical2P + mythical3P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -171,7 +112,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (mythical1P + mythical2P + mythical3P + mythical4P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -191,7 +132,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         }
                     }
                 } else if (p.getLocation().getX() < 0 && p.getLocation().getZ() > 0) {
@@ -226,7 +167,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (snow1P + snow2P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -245,7 +186,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (snow1P + snow2P + snow3P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -264,7 +205,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (snow1P + snow2P + snow3P + snow4P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -283,7 +224,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         }
                     }
                 } else if (p.getLocation().getX() < 0 && p.getLocation().getZ() < 0) {
@@ -319,7 +260,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (oriental1P + oriental2P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -339,7 +280,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (oriental1P + oriental2P + oriental3P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -359,7 +300,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (oriental1P + oriental2P + oriental3P + oriental4P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -379,7 +320,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         }
                     }
                 } else if (p.getLocation().getX() > 0 && p.getLocation().getZ() < 0) {
@@ -415,7 +356,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (lava1P + lava2P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -435,7 +376,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (lava1P + lava2P + lava3P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -455,7 +396,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         } else if (random <= (lava1P + lava2P + lava3P + lava4P)) {
                             ArmorStand armor = (ArmorStand) Bukkit.getWorld("normal").spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                             armor.setVisible(false);
@@ -475,7 +416,7 @@ public class Listening  implements Listener {
                                     }
                                 }
                             };
-                            runnable.runTaskTimer(plugin, 10, 10);
+                            runnable.runTaskTimer(Main.INSTANCE(), 10, 10);
                         }
                     }
                 }
@@ -484,161 +425,9 @@ public class Listening  implements Listener {
     }
 
     @EventHandler
-    public void onDamage(EntityDamageEvent event){
-        if(event.getEntity() instanceof Player){
-            Player p = ((Player) event.getEntity()).getPlayer();
-            if(event.getCause() == EntityDamageEvent.DamageCause.LAVA){
-                p.damage(event.getDamage());
-            }
-        }
-    }
-
-    @EventHandler
-    public void onEntDamByBlock(EntityDamageByBlockEvent event){
-        if(event.getDamager() != null) {
-            if (event.getEntity() instanceof Player) {
-                Player p = ((Player) event.getEntity()).getPlayer();
-                if (event.getDamager().getType().name().endsWith("_BUSH")) {
-                    event.setCancelled(true);
-                } else if (event.getDamager().getType() == Material.MAGMA_BLOCK) {
-                    event.setCancelled(true);
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void onPlaceBlock(BlockPlaceEvent event){
-            Player p = event.getPlayer();
-            if (p.getGameMode() == GameMode.SURVIVAL) {
-                if(event.getBlock().getLocation().getY() > 50){
-                    p.sendMessage(ChatColor.RED + "You can't place blocks above Y-50");
-                    event.setCancelled(true);
-                } else {
-                    //if(event.getBlockReplacedState() == Block)
-                Block block = event.getBlock();
-                if (block.getType() == Material.OAK_PLANKS) {
-                    int time = 10 * 20;
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OAK_PLANKS){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OAK_PLANKS.createBlockData());
-                            }
-                        }
-                    }, time - 40);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OAK_PLANKS){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OAK_PLANKS.createBlockData());
-                            }
-                        }
-                    }, time - 30);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OAK_PLANKS){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OAK_PLANKS.createBlockData());
-                            }
-                        }
-                    }, time - 20);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OAK_PLANKS){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OAK_PLANKS.createBlockData());
-                            }
-                        }
-                    }, time - 10);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OAK_PLANKS){
-                                block.getLocation().getBlock().setType(Material.AIR);
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OAK_PLANKS.createBlockData());
-                            }
-                        }
-                    }, time);
-                    //send to a single player so only they see the explosion happen
-                    //manager.sendServerPacket(p, packet);
-                    //send to all players
-
-
-                } else if (block.getType() == Material.OBSIDIAN) {
-                    int time = 150 * 20;
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OBSIDIAN){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OBSIDIAN.createBlockData());
-                            }
-                        }
-                    }, time - 40);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OBSIDIAN){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OBSIDIAN.createBlockData());
-                            }
-                        }
-                    }, time - 30);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OBSIDIAN){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OBSIDIAN.createBlockData());
-                            }
-                        }
-                    }, time - 20);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OBSIDIAN){
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OBSIDIAN.createBlockData());
-                            }
-                        }
-                    }, time - 10);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if(block.getLocation().getBlock().getType() == Material.OBSIDIAN){
-                                block.getLocation().getBlock().setType(Material.AIR);
-                                Bukkit.getWorld("normal").spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 20, 0.3, 0.3, 0.3, Material.OBSIDIAN.createBlockData());
-                            }
-                        }
-                    }, time);
-                    //send to a single player so only they see the explosion happen
-                    //manager.sendServerPacket(p, packet);
-                    //send to all players
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void onBreakBlock(BlockBreakEvent event){
-        Player p = event.getPlayer();
-        if(p.getGameMode() == GameMode.SURVIVAL){
-            if(p.getWorld() == Bukkit.getWorld("normal")){
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler
-    public void onDeath(PlayerDeathEvent event){
-        Economy economy = me.getEconomy();
-        Player killed = (Player) event.getEntity();
-        if(killed.isDead()){
-            killed.getKiller();
-            if(killed.getKiller() instanceof Player){
-                Player killer = killed.getKiller();
-                killer.playSound(killer.getLocation(), Sound.ENTITY_BAT_DEATH, 1, 1);
-                killed.playSound(killed.getLocation(), Sound.ENTITY_BAT_DEATH, 1, 1);
-                economy.depositPlayer(killer, 2);
-            }
-        }
-    }
-
-    @EventHandler
-    public void onInteract(PlayerInteractEvent event){
-        Action action = event.getAction();
-        if(action == Action.PHYSICAL){
-            if(event.getClickedBlock().getType() == Material.LIGHT_WEIGHTED_PRESSURE_PLATE){
-                Player p = event.getPlayer();
-                p.setVelocity(p.getEyeLocation().getDirection().multiply(17.5));
-            }
+    public void onHorse(EntitySpawnEvent event){
+        if(event.getEntity().getType() == EntityType.ENDERMITE){
+            event.getEntity().remove();
         }
     }
 
