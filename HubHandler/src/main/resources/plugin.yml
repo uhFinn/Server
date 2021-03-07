@@ -1,0 +1,9 @@
+name: HubHandler
+version: ${project.version}
+main: hubhandler.me
+api-version: 1.16
+commands:
+  fireworks:
+    description: Starts some nice fireworks
+  hub:
+    description: Teleport to hub
