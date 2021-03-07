@@ -16,7 +16,7 @@ public class PlayerPressureplateBooster implements Listener
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
-        Player p = (Player) event.getPlayer();
+        Player p = event.getPlayer();
         if (event.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.LIGHT_WEIGHTED_PRESSURE_PLATE) {
             p.setVelocity(p.getEyeLocation().getDirection().multiply(17.5));
         }

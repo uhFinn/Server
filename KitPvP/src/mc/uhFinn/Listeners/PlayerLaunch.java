@@ -23,7 +23,7 @@ public class PlayerLaunch implements Listener
     public void playerLaunch(PlayerMoveEvent event){
         Player p = event.getPlayer();
         System.out.println(p.getWalkSpeed());
-        if(Bukkit.getWorld("normal").getBlockAt(p.getLocation()).getType() == Material.CAVE_AIR){
+        if(Main.INSTANCE().getActiveWorld().getBlockAt(p.getLocation()).getType() == Material.CAVE_AIR){
             final boolean[] active = {false};
             if(p.getLocation().getY() < 155){
                 if(p.getLocation().getY() > 140){
@@ -425,13 +425,13 @@ public class PlayerLaunch implements Listener
     }
 
     @EventHandler
-    public void onHorse(EntitySpawnEvent event){
+    public void onSpawnEndermite(EntitySpawnEvent event){
         if(event.getEntity().getType() == EntityType.ENDERMITE){
             event.getEntity().remove();
         }
     }
 
-    public static Vector calculateVelocity(Vector from, Location to, int heightGain, double Gravity)
+    private static Vector calculateVelocity(Vector from, Location to, int heightGain, double Gravity)
     {
         // Gravity
         double gravity = Gravity;

@@ -12,22 +12,13 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class PlayerKillBelowHeight implements Listener
 {
-    private World activeWorld;
-
-    private World getActiveWorld()
-    {
-        if(activeWorld==null)
-            activeWorld= Main.INSTANCE().getServer().getWorld("normal");
-        return activeWorld;
-    }
-
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
         Player p = (Player) event.getPlayer();
         Location loc = p.getLocation();
         if(loc.getY() < 7){
-            if(loc.getWorld() == getActiveWorld()) {
+            if(loc.getWorld() == Main.INSTANCE().getActiveWorld()) {
                 p.setHealth(0);
             }
         }

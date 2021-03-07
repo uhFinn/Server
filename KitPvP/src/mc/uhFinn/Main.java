@@ -11,6 +11,7 @@ package mc.uhFinn;
 
 import mc.uhFinn.Listeners.*;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,6 +23,13 @@ public class Main extends JavaPlugin
         return _instance;
     }
 
+    private World activeWorld;
+    public World getActiveWorld()
+    {
+        if(activeWorld==null)
+            activeWorld= getServer().getWorld("normal");
+        return activeWorld;
+    }
 
     @Override
     public void onEnable()

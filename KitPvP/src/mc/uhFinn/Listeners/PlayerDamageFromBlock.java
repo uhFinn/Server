@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityDamageByBlockEvent;
 public class PlayerDamageFromBlock implements Listener
 {
     @EventHandler
-    public void onEntDamByBlock(EntityDamageByBlockEvent event){
+    public void onEntityDamageByBlock(EntityDamageByBlockEvent event){
         if(event.getDamager() != null)
         {
             Material block = event.getDamager().getType();
