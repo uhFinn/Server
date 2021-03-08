@@ -224,12 +224,12 @@ public class InventoryInteract implements Listener {
                     ////////////////////////////////////////////////////////////////////////////
                 }
                 if(p.getInventory().getItemInMainHand().getType() == Material.BOOK){
-
+                    //The below was just for testing, no current purpose
                     List pages = new ArrayList();
-                    pages.add("Hello, welcome to TimeVisualSale's server!"); // Page 1
-                    pages.add("Website: timevisualsales.com"); // Page 2
-                    pages.add("Hope you enjoy your stay/play!"); // Page 3
-
+                    pages.add(""); // Page 1
+                    pages.add(""); // Page 2
+                    pages.add(""); // Page 3
+                    //The Above was just for testing, no current purpose
                     ItemStack writtenBook = new ItemStack(Material.WRITTEN_BOOK);
                     BookMeta bookMeta = (BookMeta) writtenBook.getItemMeta();
                     bookMeta.setTitle("Rules & How To Play");
