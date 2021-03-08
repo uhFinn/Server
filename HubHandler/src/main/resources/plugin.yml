@@ -1,6 +1,6 @@
 name: HubHandler
 version: ${project.version}
-main: hubhandler.me
+main: uhFinn.hub.Main
 api-version: 1.16
 commands:
   fireworks:

@@ -1,6 +1,10 @@
-package hubhandler;
+package uhFinn.hub;
 
-import Listeners.Listening;
+import uhFinn.hub.Listeners.InventoryInteract;
+import uhFinn.hub.Listeners.PlayerJoin;
+import uhFinn.hub.Listeners.InventoryOpen;
+import uhFinn.hub.Listeners.WorldChange;
+import uhFinn.hub.Listeners.BlockEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -9,12 +13,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class me extends JavaPlugin implements Listener {
+public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
         // Plugin startup logic
-        new Listening(this);
+        new PlayerJoin(this);
+        new InventoryInteract(this);
+        new InventoryOpen(this);
+        new WorldChange(this);
+        new BlockEvent(this);
     }
 
     @Override
