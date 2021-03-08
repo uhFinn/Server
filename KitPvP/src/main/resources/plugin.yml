@@ -1,0 +1,4 @@
+name: KitPvP
+version: ${project.version}
+main: uhfinn.kitpvp.Main
+description: KitPvP plugin

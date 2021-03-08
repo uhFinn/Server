@@ -1,7 +1,7 @@
 /* Author: Jonathan
  * Latest edit: Jonathan
  * */
-package mc.uhFinn.Listeners;
+package uhfinn.kitpvp.Listeners;
 
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;

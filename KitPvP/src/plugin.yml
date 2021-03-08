@@ -1,4 +1,0 @@
-name: KitPVP
-version: ${project.version}
-main: mc.UhFinn.Main
-api-version: 1.16

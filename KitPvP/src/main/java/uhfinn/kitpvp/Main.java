@@ -7,13 +7,13 @@
 * */
 
 
-package mc.uhFinn;
+package uhfinn.kitpvp;
 
-import mc.uhFinn.Listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import uhfinn.kitpvp.Listeners.*;
 
 public class Main extends JavaPlugin
 {

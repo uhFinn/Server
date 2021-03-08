@@ -1,7 +1,7 @@
 /* Author: Jonathan
  * Latest edit: Jonathan
  * */
-package mc.uhFinn.Listeners;
+package uhfinn.kitpvp.Listeners;
 
 import mc.uhFinn.Main;
 import org.bukkit.*;
