@@ -1,4 +1,4 @@
-/* Author: Jonathan
+/* Author: Finn
  * Latest edit: Jonathan
  * */
 package uhfinn.kitpvp.Listeners;

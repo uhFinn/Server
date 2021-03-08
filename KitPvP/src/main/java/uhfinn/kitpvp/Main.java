@@ -1,8 +1,5 @@
 /*
-* This is the main class of your plugin, ALWAYS call it main so its obvious!!!
-*
-*
-* Author: Jonathan
+* Author: Finn
 * Latest edit: Jonathan
 * */
 

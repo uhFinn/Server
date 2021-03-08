@@ -1,9 +1,8 @@
-/* Author: Jonathan
+/* Author: Finn
  * Latest edit: Jonathan
  * */
 package uhfinn.kitpvp.Listeners;
 
-import mc.uhFinn.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -16,6 +15,7 @@ import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+import uhfinn.kitpvp.Main;
 
 public class PlayerLaunch implements Listener
 {
