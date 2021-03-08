@@ -3,13 +3,13 @@
  * */
 package uhfinn.kitpvp.Listeners;
 
-import mc.uhFinn.Main;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import uhfinn.kitpvp.Main;
 
 public class PlayerPlaceBlock implements Listener {
     @EventHandler
