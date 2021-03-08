@@ -1,0 +1,5 @@
+name: PrelolsCore
+version: ${project.version}
+main: prelol.prelolscore.Main
+prefix: PrelolsCore
+description: Core plugin where most fundamental stuff takes place.
