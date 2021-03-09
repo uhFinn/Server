@@ -4,13 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+
+import jdk.jfr.internal.LogLevel;
 import org.bukkit.entity.Player;
 import prelol.prelolscore.Main;
 
 
-public abstract class Database
+public abstract class BaseDatabase
 {
-    Connection connection;
+    public Connection connection;
 
     public abstract Connection getSQLConnection();
 
@@ -25,7 +28,20 @@ public abstract class Database
     {
         return new Query(getSQLConnection());
     }
-
+    public void closeConnection()
+    {
+        if(connection!=null)
+        {
+            try
+            {
+                connection.close();
+            }
+            catch (Exception ex)
+            {
+                Main.Instance().getLogger().log(Level.SEVERE,"Could not end database connection.");
+            }
+        }
+    }
     // These are the methods you can use to get things out of your database. You of course can make new ones to return different things in the database.
     // This returns the number of people the player killed.
 

@@ -1,5 +1,6 @@
-package prelol.prelolscore.Database.Abstraction;
+package prelol.prelolscore.Database;
 
+import prelol.prelolscore.Database.Abstraction.BaseDatabase;
 import prelol.prelolscore.Main;
 
 import java.io.File;
@@ -10,13 +11,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 
-public class SQLite extends Database
+public class SQLite extends BaseDatabase
 {
     String dbname;
 
-    public SQLite(String dbname){
+    public SQLite(){
 
-        this.dbname = dbname;
+        this.dbname = Main.Instance().getConfig().getString("SQLite.Filename", "prelolsCoreDb");
     }
 
     public String SQLiteCreateTokensTable = "CREATE TABLE IF NOT EXISTS table_name (" + // make sure to put your table name in here too.
