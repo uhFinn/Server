@@ -1,5 +1,5 @@
 /* Author: Finn
- * Latest edit: Jonathan
+ * Latest edit: Finn
  * */
 package uhfinn.kitpvp.Listeners;
 

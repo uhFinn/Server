@@ -1,6 +1,6 @@
 /*
 * Author: Finn
-* Latest edit: Jonathan
+* Latest edit: Finn
 * */
 
 
@@ -38,6 +38,7 @@ public class Main extends JavaPlugin
         addListener(new PlayerLaunch());
         addListener(new PlayerPlaceBlock());
         addListener(new PlayerPressureplateBooster());
+        addListener(new PlayerJoin());
     }
 
     @Override
