@@ -35,6 +35,7 @@ public class Main extends JavaPlugin
         addListener(new PlayerBreakBlock());
         addListener(new PlayerDamageFromBlock());
         addListener(new PlayerKillBelowHeight());
+        addListener(new PlayerKill());
         addListener(new PlayerLaunch());
         addListener(new PlayerPlaceBlock());
         addListener(new PlayerJoin());
