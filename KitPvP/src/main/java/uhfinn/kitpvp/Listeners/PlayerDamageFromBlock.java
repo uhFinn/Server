@@ -1,5 +1,5 @@
 /* Author: Finn
- * Latest edit: Jonathan
+ * Latest edit: Finn
  * */
 package uhfinn.kitpvp.Listeners;
 
@@ -12,11 +12,9 @@ public class PlayerDamageFromBlock implements Listener
 {
     @EventHandler
     public void onEntityDamageByBlock(EntityDamageByBlockEvent event){
-        if(event.getDamager() != null)
-        {
+        if(event.getDamager() != null){
             Material block = event.getDamager().getType();
-            if (block == Material.SWEET_BERRY_BUSH || block == Material.MAGMA_BLOCK)
-            {
+            if (block == Material.SWEET_BERRY_BUSH || block == Material.MAGMA_BLOCK){
                 event.setCancelled(true);
             }
         }

@@ -1,5 +1,5 @@
 /* Author: Finn
- * Latest edit: Jonathan
+ * Latest edit: Finn
  * */
 package uhfinn.kitpvp.Listeners;
 
@@ -16,6 +16,12 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import uhfinn.kitpvp.Main;
+
+/*
+ * Ill be honest this code is an absolute shit show
+ * Im going to be looking at methods into compressing this because honestly,
+ * This is just pain to look at
+ */
 
 public class PlayerLaunch implements Listener
 {

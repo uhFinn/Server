@@ -14,12 +14,11 @@ import uhfinn.kitpvp.Main;
 public class PlayerKillBelowHeight implements Listener
 {
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event)
-    {
+    public void onPlayerMove(PlayerMoveEvent event){
         Player p = (Player) event.getPlayer();
         Location loc = p.getLocation();
         if(loc.getY() < 7){
-            if(loc.getWorld() == Main.INSTANCE().getActiveWorld()) {
+            if(loc.getWorld() == Main.INSTANCE().getActiveWorld()){
                 p.setHealth(0);
             }
         }

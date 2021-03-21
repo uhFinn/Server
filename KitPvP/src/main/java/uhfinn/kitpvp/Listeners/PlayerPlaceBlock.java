@@ -32,7 +32,7 @@ public class PlayerPlaceBlock implements Listener {
             }
         }
     }
-    private void scheduleBreaking(Block block, int ticks, Material replaceType)
+    private void scheduleBreaking(Block block, int ticks, Material replaceType) // Added 'Material replaceType' in case the blocks replaced are grass or water which ruins the map
     {
         //warning shots getting setup here.
         for(int i=0;i<50;i+=10)
