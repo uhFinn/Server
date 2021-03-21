@@ -24,7 +24,7 @@ public class PlayerKill implements Listener
     public void PlayerDamageEvent(EntityDamageEvent event){
         if(event.getEntity() instanceof Player){
             Player damaged = (Player) event.getEntity();
-            if(damaged.getHealth() < 1){
+            if(damaged.getHealth() - event.getDamage() < 1){
                 event.setCancelled(true); // Prevents the player from 'officially' dying
                 damaged.setInvulnerable(true);
                 damaged.setGameMode(GameMode.SPECTATOR);
@@ -38,7 +38,7 @@ public class PlayerKill implements Listener
                     //When A player killed
                     EntityDamageByEntityEvent entityEvent = (EntityDamageByEntityEvent) event;
                     Player damager = (Player) entityEvent.getDamager();
-
+                    damager.playSound(damager.getLocation(), Sound.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, 1, 1);
                     //// Damaged player handling ////
                     damaged.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "DEATH >  " + ChatColor.WHITE + "You died to " + event.getCause().name().toLowerCase() + "!"); // Chat Message, May change this later | DEATH >  You died to lava!
                     damaged.sendTitle(ChatColor.RED + "Respawning", ChatColor.WHITE + "Respawning in 5 Seconds", 10, 20, 0);
@@ -64,7 +64,7 @@ public class PlayerKill implements Listener
                     }, 90L);
                     Bukkit.getScheduler().scheduleSyncDelayedTask(Main.INSTANCE(), new Runnable() {
                         public void run() {
-                            damaged.teleport(respawnLocation); damaged.setGameMode(GameMode.SURVIVAL); damaged.setInvulnerable(false);
+                            damaged.teleport(respawnLocation); damaged.setGameMode(GameMode.SURVIVAL); damaged.setInvulnerable(false); damaged.setHealth(20); damaged.getInventory().clear(); damaged.setSaturation(20);
                         }
                     }, 110L);
 
@@ -100,7 +100,7 @@ public class PlayerKill implements Listener
                     }, 90L);
                     Bukkit.getScheduler().scheduleSyncDelayedTask(Main.INSTANCE(), new Runnable() {
                         public void run() {
-                            damaged.teleport(respawnLocation); damaged.setGameMode(GameMode.SURVIVAL); damaged.setInvulnerable(false);
+                            damaged.teleport(respawnLocation); damaged.setGameMode(GameMode.SURVIVAL); damaged.setInvulnerable(false); damaged.setHealth(20); damaged.getInventory().clear(); damaged.setSaturation(20);
                         }
                     }, 110L);
                     /*

@@ -6,6 +6,7 @@ package uhfinn.kitpvp.Listeners;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -45,6 +46,7 @@ public class PlayerLaunch implements Listener
                     }
                 }
             } else {
+                p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 1, 1);
                 if (p.getLocation().getX() > 0 && p.getLocation().getZ() > 0) {
                     //Mythical Forest
                     if (active[0] == false) {

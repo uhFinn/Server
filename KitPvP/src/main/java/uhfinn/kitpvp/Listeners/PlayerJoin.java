@@ -10,6 +10,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scoreboard.*;
@@ -47,4 +48,10 @@ public class PlayerJoin implements Listener
 
 
     }
+    //May Be Temporary
+    @EventHandler
+    public void onHunger(FoodLevelChangeEvent event){
+        event.setCancelled(true);
+    }
+    //
 }
