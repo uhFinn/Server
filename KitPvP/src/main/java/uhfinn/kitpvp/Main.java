@@ -37,7 +37,6 @@ public class Main extends JavaPlugin
         addListener(new PlayerKillBelowHeight());
         addListener(new PlayerLaunch());
         addListener(new PlayerPlaceBlock());
-        addListener(new PlayerPressureplateBooster());
         addListener(new PlayerJoin());
     }
 
