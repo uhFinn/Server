@@ -1,4 +1,5 @@
 name: KitPvP
 version: ${project.version}
+api-version: 1.13
 main: uhfinn.kitpvp.Main
 description: KitPvP plugin
