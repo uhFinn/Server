@@ -64,7 +64,7 @@ public class Main extends JavaPlugin
                     timeShift(1000, 6000, 10, false);
                 } else if(Bukkit.getWorld("normal").getTime() == 6000){ // Is Mid-Day
                     timeShift(6000, 12166, 10, true);
-                } else if(Bukkit.getWorld("normal").getTime() == 12166){ // Is Sunset
+                } else if(Bukkit.getWorld("normal").getTime() == 12000){ // Is Sunset
                     timeShift(12166, 18000, 10, true);
                 } else if(Bukkit.getWorld("normal").getTime() == 18000){ // Is Night
                     timeShift(18000, 25000, 10, false);
@@ -89,14 +89,18 @@ public class Main extends JavaPlugin
         //Redstone Lamps is currently not active as ill be looking into making it work in ways that don't lag the server
         long split = (toTime - fromTime) / 200;
         long currentTime = Bukkit.getWorld("normal").getTime();
+        final Long[] cur = {currentTime}; // Intellij said it needed to be done, so it was done. No questions asked lol
         int i;
         for(i=0; i<200;i++)
         {
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.INSTANCE(), new Runnable() {
+            new BukkitRunnable() {
+                @Override
                 public void run() {
-                    Bukkit.getWorld("normal").setTime(currentTime + split);
+                    cur[0] = cur[0] + split;
+                    Bukkit.getWorld("normal").setTime(cur[0]);
+                    if(Bukkit.getWorld("normal").getTime() == 17800) Bukkit.getWorld("normal").setTime(18000);
                 }
-            }, (shiftPeriod * 20L) - i);
+            }.runTaskLater(this, (shiftPeriod * 20L) - i);
         }
     }
 }
