@@ -1,5 +1,5 @@
 /* Author: Finn
- * Latest edit: Jonathan
+ * Latest edit: Finn
  * */
 package uhfinn.kitpvp.Listeners;
 
@@ -16,26 +16,23 @@ public class PlayerPlaceBlock implements Listener {
     public void onPlaceBlock(BlockPlaceEvent event){
         Player p = event.getPlayer();
         if (p.getGameMode() == GameMode.SURVIVAL) {
-            if(event.getBlock().getLocation().getY() > 50){
+            if (event.getBlock().getLocation().getY() > 50) {
                 p.sendMessage(ChatColor.DARK_RED + "You can't place blocks above Y-50");
                 event.setCancelled(true);
-            }
-            else
-            {
+            } else {
                 Block block = event.getBlock();
-                switch (block.getType())
-                {
+                switch (block.getType()) {
                     case OAK_PLANKS:
-                        scheduleBreaking(block,10*20);
+                        scheduleBreaking(block, 10 * 20, event.getBlockReplacedState().getType());
                         break;
                     case OBSIDIAN:
-                        scheduleBreaking(block,150*20);
+                        scheduleBreaking(block, 150 * 20, event.getBlockReplacedState().getType());
                         break;
                 }
             }
         }
     }
-    private void scheduleBreaking(Block block, int ticks)
+    private void scheduleBreaking(Block block, int ticks, Material replaceType)
     {
         //warning shots getting setup here.
         for(int i=0;i<50;i+=10)
@@ -52,7 +49,7 @@ public class PlayerPlaceBlock implements Listener {
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.INSTANCE(), new Runnable() {
             public void run() {
                 if(block.getLocation().getBlock().getType() == block.getType()){
-                    block.getLocation().getBlock().setType(Material.AIR);
+                    block.getLocation().getBlock().setType(replaceType);
                 }
             }
         }, ticks);
