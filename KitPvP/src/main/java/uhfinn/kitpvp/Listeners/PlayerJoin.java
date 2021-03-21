@@ -51,7 +51,8 @@ public class PlayerJoin implements Listener
     //May Be Temporary
     @EventHandler
     public void onHunger(FoodLevelChangeEvent event){
-        event.setCancelled(true);
+        Player p = (Player) event.getEntity();
+        p.setSaturation(20);
     }
     //
 }
