@@ -29,7 +29,6 @@ public class PlayerLaunch implements Listener
     @EventHandler
     public void playerLaunch(PlayerMoveEvent event){
         Player p = event.getPlayer();
-        System.out.println(p.getWalkSpeed());
         if(Main.INSTANCE().getActiveWorld().getBlockAt(p.getLocation()).getType() == Material.CAVE_AIR){
             final boolean[] active = {false};
             if(p.getLocation().getY() < 155){
